@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -qq -y tar wget && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
-RUN wget -O /tmp/grafana.tar.gz $(wget -O - https://grafana.com/grafana/download?platform=arm | grep -o '<a href=['"'"'"][^"'"'"']*['"'"'"]' | sed -e 's/^<a href=["'"'"']//' -e 's/["'"'"']$//' | grep armv7.tar.gz) 
+RUN wget -O /tmp/grafana.tar.gz https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-5.3.2.linux-armv7.tar.gz
 
 RUN mkdir /tmp/grafana && tar xfvz /tmp/grafana.tar.gz --strip-components=1 -C /tmp/grafana
 
@@ -25,7 +25,7 @@ ENV PATH=/usr/share/grafana/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bi
 
 WORKDIR $GF_PATHS_HOME
 
-RUN apt-get update && apt-get install -qq -y libfontconfig ca-certificates && \
+RUN apt-get update && apt-get install -qq -y libfontconfig ca-certificates curl && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
