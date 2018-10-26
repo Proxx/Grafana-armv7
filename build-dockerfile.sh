@@ -1,5 +1,12 @@
 #!/bin/sh
 
+log() {
+    TIMESTAMP=[`date "+%Y-%m-%d %H:%M:%S"`]
+    echo "$TIMESTAMP $1"
+}
+
+log "Start $(basename "$0")"
+
 # set script working directory 
 ROOT_DIR=$(dirname "$0")
 
@@ -15,7 +22,7 @@ fi
 
 if [ "$VERSION" != "$CURRENT" ]; then
 
-    echo "new version found: '$CURRENT' -> '$VERSION'"
+    log "new version found: '$CURRENT' -> '$VERSION'"
 
     # downlad Dockerfile from grafana repo
     curl -L https://raw.githubusercontent.com/grafana/grafana/master/packaging/docker/Dockerfile > $ROOT_DIR/Dockerfile
@@ -37,5 +44,5 @@ if [ "$VERSION" != "$CURRENT" ]; then
 
     echo "$VERSION" > $ROOT_DIR/latest
 else
-    echo "no new version found"
+    log "no new version found"
 fi
