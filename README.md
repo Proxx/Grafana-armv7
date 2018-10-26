@@ -1,5 +1,10 @@
 # Grafana-armv7
+
+### Grafana version: 5.3.2
+
 Dockerfile of grafana on armv7
+
+
 
 # Grafana Docker image
 
