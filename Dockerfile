@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -qq -y tar wget && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
-RUN wget -O /tmp/grafana.tar.gz https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-5.4.0.linux-armv7.tar.gz
+RUN wget -O /tmp/grafana.tar.gz https://dl.grafana.com/oss/release/grafana-5.4.0.linux-armv7.tar.gz
 
 RUN mkdir /tmp/grafana && tar xfvz /tmp/grafana.tar.gz --strip-components=1 -C /tmp/grafana
 
