@@ -1,5 +1,5 @@
 # Grafana-armv7
-Grafana version: 5.3.4
+Grafana version: 5.4.0
 
 automated Dockerfile generation of Grafana(armv7)
 
