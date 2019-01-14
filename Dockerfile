@@ -1,4 +1,5 @@
-FROM debian:stretch-slim
+ARG BASE_IMAGE=debian:stretch-slim
+FROM ${BASE_IMAGE}
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -6,11 +7,12 @@ RUN apt-get update && apt-get install -qq -y tar wget && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
-RUN wget -O /tmp/grafana.tar.gz https://dl.grafana.com/oss/release/grafana-5.4.2.linux-armv7.tar.gz
+RUN wget -O /tmp/grafana.tar.gz 
 
 RUN mkdir /tmp/grafana && tar xfvz /tmp/grafana.tar.gz --strip-components=1 -C /tmp/grafana
 
-FROM debian:stretch-slim
+ARG BASE_IMAGE=debian:stretch-slim
+FROM ${BASE_IMAGE}
 
 ARG GF_UID="472"
 ARG GF_GID="472"
