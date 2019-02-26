@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -qq -y tar wget && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
-RUN wget -O /tmp/grafana.tar.gz https://dl.grafana.com/oss/release/grafana-5.4.3.linux-armv7.tar.gz
+RUN wget -O /tmp/grafana.tar.gz https://dl.grafana.com/oss/release/grafana-6.0.0.linux-armv7.tar.gz
 
 RUN mkdir /tmp/grafana && tar xfvz /tmp/grafana.tar.gz --strip-components=1 -C /tmp/grafana
 
@@ -39,6 +39,7 @@ RUN mkdir -p "$GF_PATHS_HOME/.aws" && \
     useradd -r -u $GF_UID -g grafana grafana && \
     mkdir -p "$GF_PATHS_PROVISIONING/datasources" \
              "$GF_PATHS_PROVISIONING/dashboards" \
+             "$GF_PATHS_PROVISIONING/notifiers" \
              "$GF_PATHS_LOGS" \
              "$GF_PATHS_PLUGINS" \
              "$GF_PATHS_DATA" && \
