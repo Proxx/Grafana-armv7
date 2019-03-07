@@ -7,9 +7,10 @@ RUN apt-get update && apt-get install -qq -y tar wget && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
-RUN wget -O /tmp/grafana.tar.gz https://dl.grafana.com/oss/release/grafana-6.0.0.linux-armv7.tar.gz
+RUN wget -O /tmp/grafana.tar.gz https://dl.grafana.com/oss/release/grafana-6.0.1.linux-armv7.tar.gz
 
-RUN mkdir /tmp/grafana && tar xfvz /tmp/grafana.tar.gz --strip-components=1 -C /tmp/grafana
+# Change to tar xfzv to make tar print every file it extracts
+RUN mkdir /tmp/grafana && tar xfz /tmp/grafana.tar.gz --strip-components=1 -C /tmp/grafana
 
 ARG BASE_IMAGE=debian:stretch-slim
 FROM ${BASE_IMAGE}
