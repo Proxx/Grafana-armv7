@@ -1,3 +1,6 @@
+# Depricated: Grafana has arm32 images available on github please use them instead.
+
+
 # Grafana-armv7
 Grafana version: 5.4.3
 
