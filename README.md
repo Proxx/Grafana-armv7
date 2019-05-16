@@ -1,4 +1,4 @@
-# Depricated: Grafana has arm32 images available on github please use them instead.
+# Depricated: Grafana has arm32 images available on Dockerhub please use them instead.
 
 
 # Grafana-armv7
